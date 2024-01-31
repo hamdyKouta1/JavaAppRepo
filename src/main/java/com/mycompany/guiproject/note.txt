@@ -1,0 +1,367 @@
+/*
+public class GUIProject {
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Rounded Buttons Example");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            // Create a main panel with BorderLayout
+            JPanel mainPanel = new JPanel(new BorderLayout());
+            mainPanel.setBackground(MyColors.backgroundColor);
+
+            // Create a label and set its position to top center
+            JLabel label = new JLabel();
+            label.setText("HELLO PLEASE Choose Which service would you like to use");
+            ImageIcon logo = new ImageIcon("C:\\Users\\hamdy\\OneDrive\\Documents\\NetBeansProjects\\GUIProject\\src\\main\\java\\phone(1).png");
+           
+            label.setIcon(logo);
+            label.setForeground(Color.white);
+            label.setVerticalAlignment(JLabel.TOP);
+            label.setHorizontalAlignment(JLabel.CENTER);
+            label.setBounds(0, 0, 900, 200);
+            int fontSize = 25;
+
+            label.setFont(label.getFont().deriveFont(Font.PLAIN, fontSize));
+            mainPanel.add(label, BorderLayout.PAGE_START);
+
+            // Create a panel for the buttons with FlowLayout
+            JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 900, 50));
+            buttonPanel.setBackground(MyColors.backgroundColor);
+
+            // Create rounded buttons with specific labels
+            RoundButton buttonSMS = new RoundButton("SMS");
+            RoundButton buttonCALL = new RoundButton("CALL");
+
+            // Add ActionListener for the buttons
+            buttonSMS.addActionListener((ActionEvent e) -> {
+                System.out.println("Hi");
+               // Action.SMSUser();
+               openSMSPanel(mainPanel, "mainPanel", "smsPanel");
+            });
+
+            buttonCALL.addActionListener((ActionEvent e) -> {
+                System.out.println("Bye");
+                openCallPanel(mainPanel, "mainPanel", "callPanel");
+                //Action.CallUser();
+                NewWindow.window();
+                
+            });
+
+            // Set preferred size for the buttons
+            Dimension buttonSize = new Dimension(300, 100);
+            buttonSMS.setPreferredSize(buttonSize);
+            
+            buttonCALL.setPreferredSize(buttonSize);
+            
+        
+            buttonPanel.add(buttonSMS);
+            buttonPanel.add(buttonCALL);
+            buttonPanel.setBounds(100, 200, 100, 100);
+
+            // Add the button panel to the main panel's center
+            mainPanel.add(buttonPanel,BorderLayout.CENTER);
+            
+            // Add the main panel to the frame
+            frame.getContentPane().add(mainPanel);
+            frame.setTitle("Send OR Call Application");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            ImageIcon image = new ImageIcon("C:\\Users\\hamdy\\OneDrive\\Documents\\NetBeansProjects\\GUIProject\\src\\main\\java\\images2.jpeg");
+            frame.setIconImage(image.getImage());
+            frame.setSize(920, 720);
+            //frame.setLocationRelativeTo();
+        //    frame.setLayout(null);
+            frame.setVisible(true);
+        });
+    }
+
+    // Custom JButton class for creating rounded buttons
+    static class RoundButton extends JButton {
+
+        public RoundButton(String text) {
+            super(text);
+            setContentAreaFilled(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (getModel().isArmed()) {
+                g.setColor(MyColors.lightGreen);
+            } else {
+                g.setColor(MyColors.buttonColor);
+            }
+            g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+            super.paintComponent(g);
+        }
+
+        @Override
+        protected void paintBorder(Graphics g) {
+            g.setColor(Color.white);
+            g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+        }
+
+        @Override
+        public boolean contains(int x, int y) {
+            if (shape == null || !shape.getBounds().equals(getBounds())) {
+                shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+            }
+            return shape.contains(x, y);
+        }
+
+        private Shape shape;
+    }
+    
+    
+    
+    
+    
+    
+    public static void openSMSPanel(JPanel mainPanel, String currentPanel, String smsPanelName) {
+        // Create a new panel for SMS with a label
+        JPanel smsPanel = new JPanel(new BorderLayout());
+        smsPanel.setBackground(MyColors.backgroundColor);
+
+        JLabel smsLabel = new JLabel("SMS");
+        smsLabel.setForeground(Color.white);
+        smsLabel.setHorizontalAlignment(JLabel.CENTER);
+        smsPanel.add(smsLabel, BorderLayout.CENTER);
+
+        // Create a back button to go back to the main panel
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener((ActionEvent event) -> {
+            // Go back to the main panel
+            showMainPanel(mainPanel, currentPanel);
+        });
+        smsPanel.add(backButton, BorderLayout.SOUTH);
+
+        // Add the SMS panel to the main panel with a unique name
+        mainPanel.add(smsPanel, smsPanelName);
+
+        // Switch to the SMS panel
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, smsPanelName);
+    }
+
+    public static void openCallPanel(JPanel mainPanel, String currentPanel, String callPanelName) {
+        // Create a new panel for CALL with a label
+        JPanel callPanel = new JPanel(new BorderLayout());
+        callPanel.setBackground(MyColors.backgroundColor);
+
+        JLabel callLabel = new JLabel("CALL");
+        callLabel.setForeground(Color.white);
+        callLabel.setHorizontalAlignment(JLabel.CENTER);
+        callPanel.add(callLabel, BorderLayout.CENTER);
+
+        // Create a back button to go back to the main panel
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener((ActionEvent event) -> {
+            // Go back to the main panel
+            showMainPanel(mainPanel, currentPanel);
+        });
+        callPanel.add(backButton, BorderLayout.SOUTH);
+
+        // Add the CALL panel to the main panel with a unique name
+        mainPanel.add(callPanel, callPanelName);
+
+        // Switch to the CALL panel
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, callPanelName);
+    }
+
+    private static void showMainPanel(JPanel mainPanel, String currentPanel) {
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, currentPanel);
+    }
+}*/
+ /*
+   public static void main(String[] args){
+     // Action.SMSUser();
+     // Action.CallUser();
+      JLabel label = new JLabel();
+      label.setText("HELLO PLEASE Choose Which service would you like to use");
+      ImageIcon logo = new ImageIcon("C:\\Users\\hamdy\\OneDrive\\Documents\\NetBeansProjects\\GUIProject\\src\\main\\java\\call_msg.png");
+      JPanel panel = new JPanel();
+      panel.setBackground(MyColors.backgroundColor);
+      panel.setBounds(0, 0, 920, 720);
+      panel.add(label);
+      label.setIcon(logo);
+      label.setForeground(Color.white);
+      label.setVerticalAlignment(JLabel.TOP);
+      label.setHorizontalAlignment(JLabel.CENTER);
+      label.setBounds(0,0,900,200);
+      int fontSize = 25;
+           
+      label.setFont(label.getFont().deriveFont(Font.PLAIN, fontSize));
+      JFrame frame = new JFrame();
+     
+      frame.setSize(920,720);
+     // frame.setResizable(false);
+      frame.setLayout(null);
+      frame.setVisible(true);
+            frame.add(panel);
+            frame.setTitle("Send OR Call Application");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+      ImageIcon image = new ImageIcon("C:\\Users\\hamdy\\OneDrive\\Documents\\NetBeansProjects\\GUIProject\\src\\main\\java\\images2.jpeg");
+      frame.setIconImage(image.getImage());
+      
+      frame.getContentPane().setBackground(MyColors.backgroundColor);
+   }
+}
+ */
+
+/*
+public class DualChatTCP {
+
+    public static void init(int startPort, int listenPort, String ip) {
+        new Thread(() -> startServer(startPort)).start();
+        new Thread(() -> startClient(ip, listenPort)).start();
+    }
+
+    private static void startServer(int port) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(port);
+            System.out.println("Server listening on port " + port + "...");
+
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected: " + clientSocket);
+
+            DataInputStream dataIn = new DataInputStream(clientSocket.getInputStream());
+            DataOutputStream dataOut = new DataOutputStream(clientSocket.getOutputStream());
+            System.out.println(".....................................................");
+
+            startMessagingThreads(dataIn, dataOut);
+            System.out.println(".....................................................");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void startClient(String host, int port) {
+        try {
+            Socket socket = new Socket(host, port);
+            System.out.println("Connected to server on port " + port);
+
+            DataInputStream dataIn = new DataInputStream(socket.getInputStream());
+            DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream());
+
+            System.out.println(".....................................................");
+
+            startMessagingThreads(dataIn, dataOut);
+            System.out.println(".....................................................");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+public static void myChatWindow(DataInputStream dataIn, DataOutputStream dataOut) {
+    System.out.print("***********************************************************************************");
+
+    SwingUtilities.invokeLater(() -> {
+        JFrame frame = new JFrame("Chat App");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+
+        JTextArea chatArea = new JTextArea();
+        chatArea.setEditable(false);
+
+        JTextField messageField = new JTextField();
+        JButton sendButton = new JButton("Send");
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BorderLayout());
+        inputPanel.add(messageField, BorderLayout.CENTER);
+        inputPanel.add(sendButton, BorderLayout.EAST);
+
+        frame.setLayout(new BorderLayout());
+        frame.add(new JScrollPane(chatArea), BorderLayout.CENTER);
+        frame.add(inputPanel, BorderLayout.SOUTH);
+
+        sendButton.addActionListener(e -> {
+            try {
+                String userMessage = messageField.getText();
+                dataOut.writeUTF(userMessage);
+
+                if (userMessage.equalsIgnoreCase("exit")) {
+                    System.out.println("Chat ended by you.");
+                    System.exit(0);
+                }
+
+                messageField.setText("");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        frame.setVisible(true);
+
+        new Thread(() -> {
+            try {
+                while (true) {
+                    String receivedMessage = dataIn.readUTF();
+
+                    SwingUtilities.invokeLater(() -> {
+                        chatArea.append("Other: " + receivedMessage + "\n");
+                    });
+
+                    if (receivedMessage.equalsIgnoreCase("exit")) {
+                        System.out.println("Chat ended by the other side.");
+                        System.exit(0);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    });
+}
+
+
+    private static void startMessagingThreads(DataInputStream dataIn, DataOutputStream dataOut) {
+
+      //  myChatWindow(dataIn, dataOut);
+        new Thread(
+                () -> {
+                    // myChatWindow(dataIn, dataOut);
+
+                    try {
+                        while (true) {
+
+                            String receivedMessage = dataIn.readUTF();
+                            // chatArea.append(receivedMessage);
+                            System.out.println("Other: " + receivedMessage);
+
+                            if (receivedMessage.equalsIgnoreCase("exit")) {
+                                System.out.println("Chat ended by the other side.");
+                                System.exit(0);
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+        ).start();
+        new Thread(
+                () -> {
+                    try {
+                        while (true) {
+                            System.out.print("You: ");
+                            //String userMessage ="";// messageField.getText();
+                            String userMessage = new java.util.Scanner(System.in).nextLine();
+                            dataOut.writeUTF(userMessage);
+
+                            if (userMessage.equalsIgnoreCase("exit")) {
+                                System.out.println("Chat ended by you.");
+                                System.exit(0);
+                            }
+                        }
+                    } catch (IOException ee) {
+                        ee.printStackTrace();
+                    }
+                }
+        ).start();
+
+    }
+}
+ */
